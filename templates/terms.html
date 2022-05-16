@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Job Agency Website</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="stylesheet" href="static/css2/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/css2/font-awesome.min.css" />
+    <link rel="stylesheet" href="static/css2/owl.carousel.css" />
+    <link rel="stylesheet" href="static/css2/owl.theme.default.min.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="static/css2/style.css" />
+
+    <style>
+      #board {
+        padding: 51px 0;
+      }
+      #terms {
+        padding-bottom: 29px;
+      }
+    </style>
+  </head>
+  <body
+    id="top"
+    data-spy="scroll"
+    data-target=".navbar-collapse"
+    data-offset="50"
+  >
+    <!-- PRE LOADER -->
+    <section class="preloader">
+      <div class="spinner">
+        <span class="spinner-rotate"></span>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+          </button>
+
+          <!-- lOGO TEXT HERE -->
+          <a href="#" class="navbar-brand">Jobital</a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-nav-first">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'joblisting' %}">Jobs</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >More <span class="caret"></span
+              ></a>
+
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'team' %}">Team</a></li>
+                <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                <li class="active"><a href="{% url 'terms' %}">Terms</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+            <li>
+              <a href="{% url 'signin' %}?next={{request.path}}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="board">
+      <div class="container">
+        <div class="text-center">
+          <h1>Terms and Conditions</h1>
+
+          <br />
+
+          <p class="lead">
+            Understanding your rights and responsibilities as a Jobital user
+            Privacy Reminder. <br /><br />
+            Protect your personal information by never providing credit card,
+            bank account numbers or any other personal information open to
+            misuse, to prospective employers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-background" id="board">
+      <div class="container">
+        <div class="about-info">
+          <h2 id="terms">
+            Users who violate these Terms may have their access and use of the
+            Jobital Sites suspended or terminated, at Jobital’s discretion.
+          </h2>
+
+          <figure>
+            <figcaption>
+              <h3>Eligibility</h3>
+              <p>
+                You must be 18 years of age or older to visit or use
+                monsterindia.com in any manner. By visiting monsterindia.com or
+                accepting these Terms of Use, You represent and warrant to the
+                Company that You are 18 years of age or older, and that You have
+                the right, authority and capacity to use the Web Site and agree
+                to and abide by these Terms of Use.
+              </p>
+
+              <p>
+                You also represent and warrant to the Company that You will use
+                monsterindia.com in a manner consistent with any and all
+                applicable laws and regulations.
+              </p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <figcaption>
+              <h3>Use of Monster Content</h3>
+              <p>
+                Monster authorizes You, subject to these Terms, to view and a
+                single copy of the content available on or from monsterindia.com
+                and to access and use the Monster Sites and the Monster Content
+                (as defined below) and to download and print a single copy of
+                the content available on or from the Monster Sites solely for
+                Your personal, non-commercial use.
+              </p>
+
+              <p>
+                The contents of monsterindia.com, and of all other websites
+                under the Company's control, whether partial or otherwise
+                (monsterindia.com and such other websites are sometimes
+                collectively referred to as the “Monster Sites”), such as
+                designs, text, graphics, images, video, information, logos,
+                button icons, software, audio files and other Monster content
+                (collectively, "Monster Content"), are protected under both
+                India and foreign copyright, trademark and other laws.
+              </p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <figcaption>
+              <h3>Terms for Recruiters</h3>
+              <p>
+                Recruiters associated with Monster’s paid Clients, Customers/
+                Employers can create their Individual recruiter profile on
+                Monster website, which shall be registered by Monster at its
+                sole discretion. These recruiters will function as authorized
+                users of their company’s Monster account(s).
+              </p>
+
+              <p>
+                They can use their profile to manage their company’s profile,
+                post jobs, do database searches and perform other recruitment
+                related activities for their company. They can have a direct
+                connect with the jobseekers, who can follow them to know about
+                their activities.
+              </p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <figcaption>
+              <h3>Registration Information</h3>
+              <p>
+                When You register with any Monster Site, You will be asked to
+                provide the Company with certain information including, without
+                limitation, a valid email address (your "Information"). In
+                addition to the Terms of Use and any privacy policy applicable
+                to any Monster Web Site, You understand and agree that the
+                Company may disclose to third parties, on an anonymous basis,
+                certain aggregate information contained in your registration
+                application.
+              </p>
+
+              <p>
+                The Company will not disclose to any third party your name,
+                address, e-mail address or telephone number without your prior
+                consent, except to the extent necessary or appropriate to comply
+                with applicable laws or in legal proceedings where such
+                information is relevant.
+              </p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <figcaption>
+              <h3>
+                SHARING OF MONSTER.COM ACCOUNT ACCESS WITH DIFFERENT
+                ENTITY/INDIVIDUALS/THIRD PARTIES NOT ALLOWED
+              </h3>
+              <p>
+                You are not authorized to share your password or other account
+                access information with any other party, temporarily or
+                permanently, and breach of this obligation may tantamount to
+                disabling your Monster account and Monster Services.
+              </p>
+
+              <p>
+                Monster site Terms of Use prohibits sharing of login /passwords
+                with different entity/individual. In the event of any breach of
+                security or unauthorized use of your login ID / Account you must
+                notify Monster immediately. Monster will not be liable for any
+                loss caused by any unauthorized use of your login ID / Account.
+                You may be liable for the losses to Monster if any due to such
+                unauthorized use.
+              </p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <figcaption>
+              <h3>Use of the Monster Services</h3>
+              <p>
+                The job posting, resume database (“Monster Resume Database”) and
+                other features of the Monster Sites may be used only by
+                individuals seeking employment and/or career information and by
+                employers seeking employees. In addition, the Monster
+                Communities may be used by individuals for permitted
+                professional and personal networking purposes.
+              </p>
+
+              <p>
+                Your use of the Monster Services is also subject to any other
+                contracts You may have with Monster. In the case of any conflict
+                between these Terms and any contract you have with Monster, the
+                terms of your contract will prevail. The term “post” as used
+                herein shall mean information that You submit, publish or
+                display on a Monster Site.
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Headquarter</h2>
+              </div>
+              <address>
+                <p>212 Barrington Court <br />New York, Manhattan 10001</p>
+              </address>
+
+              <ul class="social-icon">
+                <li>
+                  <a
+                    href="#"
+                    class="fa fa-facebook-square"
+                    attr="facebook icon"
+                  ></a>
+                </li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-instagram"></a></li>
+              </ul>
+
+              <div class="copyright-text">
+                <p>Copyright &copy; 2022 Jobital</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Contact Info</h2>
+              </div>
+              <address>
+                <p>+918290496873</p>
+                <p>
+                  <a href="mailto:Jobital.edu@gmail.com"
+                    >Jobital.edu@gmail.com</a
+                  >
+                </p>
+              </address>
+
+              <div class="footer_menu">
+                <h2>Quick Links</h2>
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                  <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
+                  <li><a href="{5 url 'contact' %}">Contact Us</a></li>
+                  <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                  <li><a href="{% url 'careers' %}">Careers</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+            <li>
+              <a href="{% url 'signin' %}?next={{request.path}}">Login</a>
+            </li>
+            {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <div class="footer-info newsletter-form">
+              <div class="section-title">
+                <h2>Newsletter Signup</h2>
+              </div>
+              <div>
+                <div class="form-group">
+                  <form action="#" method="get">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                      name="email"
+                      id="email"
+                      required
+                    />
+                    <input
+                      type="submit"
+                      class="form-control"
+                      name="submit"
+                      id="form-submit"
+                      value="Send me"
+                    />
+                  </form>
+                  <span
+                    ><sup>*</sup> Please note - we do not spam your email.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="static/js2/jquery.js"></script>
+    <script src="static/js2/bootstrap.min.js"></script>
+    <script src="static/js2/owl.carousel.min.js"></script>
+    <script src="static/js2/smoothscroll.js"></script>
+    <script src="static/js2/custom.js"></script>
+  </body>
+</html>

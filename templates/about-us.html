@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Job Agency Website</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="stylesheet" href="static/css2/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/css2/font-awesome.min.css" />
+    <link rel="stylesheet" href="static/css2/owl.carousel.css" />
+    <link rel="stylesheet" href="static/css2/owl.theme.default.min.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="static/css2/style.css" />
+
+    <style>
+      #board {
+        padding: 35px 0;
+      }
+      #image{
+           height: 301px;
+           margin-top: 10%;
+           margin-bottom: 10%;
+      }
+    </style>
+  </head>
+
+  <body
+    id="top"
+    data-spy="scroll"
+    data-target=".navbar-collapse"
+    data-offset="50"
+  >
+    <!-- PRE LOADER -->
+    <section class="preloader">
+      <div class="spinner">
+        <span class="spinner-rotate"></span>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+          </button>
+
+          <!-- lOGO TEXT HERE -->
+          <a href="#" class="navbar-brand">Jobital</a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-nav-first">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'joblisting' %}">Jobs</a></li>
+            <li class="active"><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >More <span class="caret"></span
+              ></a>
+
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'team' %}">Team</a></li>
+                <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                <li><a href="{% url 'terms' %}">Terms</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+              <li><a href="{% url 'signin' %}?next={{request.path}}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="board">
+      <div class="container">
+        <div class="text-center">
+          <h1>About Us</h1>
+
+          <br /><br />
+
+          <p class="lead">
+            Jobital is a global online employment solution for people seeking
+            jobs and the employers who need great people. We've been doing this
+            for more than 20 years, and have expanded from our roots as a "job
+            board" to a global provider of a full array of job seeking, career
+            management, recruitment and talent management products and services.
+            <br /><br />
+            At the heart of our success and our future is innovation: We are
+            changing the way people think about work, and we're helping them
+            actively improve their lives and their workforce performance with
+            new technology, tools and practices
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-background" id="board">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-offset-1 col-md-4 col-xs-12 pull-right">
+            <img id="image"
+              src="/static/images2/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg"
+              class="img-responsive img-circle"
+              alt=""
+            />
+          </div>
+
+          <div class="col-md-7 col-xs-12">
+            <div class="about-info">
+              <h2>Purpose, Vision and Mission</h2>
+
+              <figure>
+                <figcaption>
+                  <p><i>Why we do what we do</i></p>
+                  <p>
+                    At Jobital, we work to bring humanity and opportunity to the
+                    job market, to enhance lives, businesses and communities
+                    around the world.
+                  </p>
+                  <p><i>Who we want to be</i></p>
+                  <p>
+                    Jobital will be the leading global talent platform
+                    connecting jobs and people.
+                  </p>
+                  <p><i>How we deliver that vision</i></p>
+                  <p>
+                    We create and deliver the best recruiting media,
+                    technologies and platforms for connecting jobs and people.
+                    We strive every day to help our customers hire and help
+                    people find jobs.
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="board">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-xs-12">
+            <img id="image"
+              src="/static/images2/annie-spratt-hCb3lIB8L8E-unsplash.jpg"
+              class="img-responsive img-circle"
+              alt=""
+            />
+          </div>
+
+          <div class="col-md-offset-1 col-md-7 col-xs-12">
+            <div class="about-info">
+              <h2>Why Jobital?</h2>
+
+              <figure>
+                <figcaption>
+                  <p>
+                    Jobital with its cutting edge technology provides relevant
+                    profiles to employers and relevant jobs to jobseekers across
+                    industry verticals, experience levels and geographies.
+                    <br /><br />
+                    We help employers find not only the best quality candidates,
+                    but more of them. To streamline the process so you can save
+                    time and money. And to help you make smarter decisions to
+                    improve your ROI. Basically, we want to give you the ability
+                    to hire like no one else can.
+                    <br /><br />
+                    Jobital is the most innovative and second largest online
+                    job portal in India. Over the past decade,
+                    Jobital.com has become a prominent name in the recruitment
+                    industry. The popularity of the portal is evident from the
+                    fact that it has crossed the 3.4 crore candidate landmark
+                    and has more than 3 lakh latest job vacancies from leading
+                    companies on the site.
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-background" id="board">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="text-center">
+              <h2>Jobital</h2>
+              <br /><br />
+              <p class="lead">
+                Headquartered in Hyderabad, Jobital India started its operations
+                in 2001 and has presence in 11 other cities of India viz.,
+                Mumbai, Delhi, Bangalore, Chennai, Pune, Kolkata, Ahmadabad,
+                Baroda, Chandigarh and Cochin.
+                <br /><br />
+                In 2016, Jobital Mobile App was voted Product of the Year under
+                the 'Mobile App Job' category in a survey of over 18000 people
+                by Nielsen. In 2015 Jobital.com was voted Product of the Year
+                and back in 2014, mPower Search was voted Product of the Year.
+                <br /><br />
+                The Indian Air Force Placement Cell (IAFPC) selected Jobital
+                India for a collaboration to provide a robust platform to assist
+                retired and shortly retiring Air Warriors seek suitable second
+                career opportunities in the corporate world. Jobital also
+                initiated 'Rozgarduniya.com' - a job portal exclusively for
+                jobseekers in rural India to enable employers in corporate India
+                to connect with rural talent, thus removing the traditional
+                barriers they face in this process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" style="padding: 7rem 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Headquarter</h2>
+              </div>
+              <address>
+                <p>212 Barrington Court <br />New York, Manhattan 10001</p>
+              </address>
+
+              <ul class="social-icon">
+                <li>
+                  <a
+                    href="#"
+                    class="fa fa-facebook-square"
+                    attr="facebook icon"
+                  ></a>
+                </li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-instagram"></a></li>
+              </ul>
+
+              <div class="copyright-text">
+                <p>Copyright &copy; 2022 Jobital</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Contact Info</h2>
+              </div>
+              <address>
+                <p>+918290496873</p>
+                <p>
+                  <a href="mailto:Jobital.edu@gmail.com">Jobital.edu@gmail.com</a>
+                </p>
+              </address>
+
+              <div class="footer_menu">
+                <h2>Quick Links</h2>
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                  <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
+                  <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                  <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                  <li><a href="{% url 'careers' %}">Careers</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+            <li>
+              <a href="{% url 'signin' %}?next={{request.path}}">Login</a>
+            </li>
+            {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <div class="footer-info newsletter-form">
+              <div class="section-title">
+                <h2>Newsletter Signup</h2>
+              </div>
+              <div>
+                <div class="form-group">
+                  <form action="#" method="get">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                      name="email"
+                      id="email"
+                      required
+                    />
+                    <input
+                      type="submit"
+                      class="form-control"
+                      name="submit"
+                      id="form-submit"
+                      value="Send me"
+                    />
+                  </form>
+                  <span
+                    ><sup>*</sup> Please note - we do not spam your email.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="static/js2/jquery.js"></script>
+    <script src="static/js2/bootstrap.min.js"></script>
+    <script src="static/js2/owl.carousel.min.js"></script>
+    <script src="static/js2/smoothscroll.js"></script>
+    <script src="static/js2/custom.js"></script>
+  </body>
+</html>

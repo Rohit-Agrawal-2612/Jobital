@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Job Agency Website</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css2/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css2/owl.carousel.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css2/owl.theme.default.min.css' %}"
+    />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'css2/style.css' %}" />
+  </head>
+  <body
+    id="top"
+    data-spy="scroll"
+    data-target=".navbar-collapse"
+    data-offset="50"
+  >
+    <!-- PRE LOADER -->
+    <section class="preloader">
+      <div class="spinner">
+        <span class="spinner-rotate"></span>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+            <span class="icon icon-bar"></span>
+          </button>
+
+          <!-- lOGO TEXT HERE -->
+          <a href="#" class="navbar-brand">Jobital</a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-nav-first">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'joblisting' %}">Jobs</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >More <span class="caret"></span
+              ></a>
+
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'team' %}">Team</a></li>
+                <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                <li><a href="{% url 'terms' %}">Terms</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'signin' %}?next={{request.path}}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div>
+              <br />
+
+              <img
+                src="{{job.photo.url}}"
+                alt=""
+                class="img-responsive wc-image"
+              />
+
+              <br />
+            </div>
+          </div>
+
+          <div class="col-lg-9 col-md-9 col-xs-12">
+            <form action="#" method="post" class="form">
+              <h2>{{job.role}}</h2>
+
+              <p class="lead">
+                <strong class="text-primary"
+                  >{{job.currency}} {{job.salary}}</strong
+                >
+                <small> per year</small>
+              </p>
+
+              <p class="lead">
+                <i class="fa fa-briefcase"></i> {{job.category}} &nbsp;&nbsp;
+                <i class="fa fa-map-marker"></i> {{job.location}} &nbsp;&nbsp;
+                <i class="fa fa-calendar"></i> {{job.date}} &nbsp;&nbsp;
+                <i class="fa fa-file"></i>{{job.type}}
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Job Description</h4>
+          </div>
+
+          <div class="panel-body">
+            <p>{{job.description}}</p>
+
+            <h4>Responsibillitites:</h4>
+
+            <p>{{job.responsibilities}}</p>
+
+            <h4>Qualifications:</h4>
+            <p>{{job.qualifications}}</p>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>About</h4>
+          </div>
+
+          <div class="panel-body">
+            <p>{{job.about}}</p>
+
+            <div class="row">
+              <div class="col-lg-6"></div>
+
+              <div class="col-lg-6"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p>
+                  <span>Company name</span>
+
+                  <br />
+
+                  <strong>{{job.name}}</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p>
+                  <span>Phone</span>
+
+                  <br />
+
+                  <strong
+                    ><a href="tel:123-456-789">{{job.telephone}}</a></strong
+                  >
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <p>
+                  <span>Mobile phone</span>
+
+                  <br />
+
+                  <strong><a href="tel:456789123">{{job.Mobile}}</a></strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p>
+                  <span>Email</span>
+
+                  <br />
+
+                  <strong
+                    ><a href="mailto:john@carsales.com"
+                      >{{job.email}}</a
+                    ></strong
+                  >
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <p>
+                  <span>Website</span>
+
+                  <br />
+
+                  <strong
+                    ><a href="http://www.cannonguards.com/"
+                      >{{job.website}}</a
+                    ></strong
+                  >
+                </p>
+              </div>
+            </div>
+
+            <p>
+              <span>City</span>
+
+              <br />
+
+              <strong>{{job.city}}</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <a href="{% url 'register' job.id %}" class="section-btn btn btn-primary pull-left"
+            >Apply for this job</a
+          >
+
+          <ul class="social-icon pull-right">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-envelope-o"></a></li>
+            <li><a href="#" class="fa fa-linkedin"></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" style="padding: 7rem 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Headquarter</h2>
+              </div>
+              <address>
+                <p>212 Barrington Court <br />New York, Manhattan 10001</p>
+              </address>
+
+              <ul class="social-icon">
+                <li>
+                  <a
+                    href="#"
+                    class="fa fa-facebook-square"
+                    attr="facebook icon"
+                  ></a>
+                </li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-instagram"></a></li>
+              </ul>
+
+              <div class="copyright-text">
+                <p>Copyright &copy; 2022 Jobital</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="footer-info">
+              <div class="section-title">
+                <h2>Contact Info</h2>
+              </div>
+              <address>
+                <p>+918290496873</p>
+                <p>
+                  <a href="mailto:Jobital.edu@gmail.com"
+                    >Jobital.edu@gmail.com</a
+                  >
+                </p>
+              </address>
+
+              <div class="footer_menu">
+                <h2>Quick Links</h2>
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                  <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
+                  <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                  <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                  <li><a href="{% url 'careers' %}">Careers</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'signout' %}">Logout</a></li>
+            {% else %}
+            <li>
+              <a href="{% url 'signin' %}?next={{request.path}}">Login</a>
+            </li>
+            {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-12">
+            <div class="footer-info newsletter-form">
+              <div class="section-title">
+                <h2>Newsletter Signup</h2>
+              </div>
+              <div>
+                <div class="form-group">
+                  <form action="#" method="get">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                      name="email"
+                      id="email"
+                      required
+                    />
+                    <input
+                      type="submit"
+                      class="form-control"
+                      name="submit"
+                      id="form-submit"
+                      value="Send me"
+                    />
+                  </form>
+                  <span
+                    ><sup>*</sup> Please note - we do not spam your email.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'js2/jquery.js' %}"></script>
+    <script src="{% static 'js2/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js2/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js2/smoothscroll.js' %}"></script>
+    <script src="{% static 'js2/custom.js' %}"></script>
+  </body>
+</html>

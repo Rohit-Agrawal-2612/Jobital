@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1/">
+    <title>Job Agency Website</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css2/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css2/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css2/owl.theme.default.min.css' %}">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+
+    <style>
+        .row{
+            margin-right: -15px;
+            margin-left: -15px;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    <!-- PRE LOADER -->
+    <section class="preloader">
+        <div class="spinner">
+
+            <span class="spinner-rotate"></span>
+
+        </div>
+    </section>
+
+
+    <!-- MENU -->
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+
+                <!-- lOGO TEXT HERE -->
+                <a href="#" class="navbar-brand">Jobital</a>
+            </div>
+
+            <!-- MENU LINKS -->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'joblisting' %}">Jobs</a></li>
+                    <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">More <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            <li class="active"><a href="{% url 'team' %}">Team</a></li>
+                            <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+                            <li><a href="{% url 'terms' %}">Terms</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'signout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'signin' %}?next={{request.path}}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <form class="row g-4 container" style="margin-top:4rem; padding-left: 10rem;" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-5">
+            <img style="width:-webkit-fill-available ;height: 61rem;padding-bottom: 1.8rem;" src="../static/hiring-3556411_1920.jpg" alt="" />
+        </div>
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="first_name" value="{{registeration.first_name}}"/>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="last_name" value="{{registeration.last_name}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" value="{{registeration.email}}"/>
+                </div>
+                <div class="col-md-6">
+                    <label for="company" class="form-label">Comapny</label>
+                    <input type="text" class="form-control" id="company" name="company_name" value="{{registeration.company_name}}" readonly/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="area code" class="form-label">Area Code</label>
+                    <input type="number" class="form-control" id="areacode" name="area_code" value="{{registeration.area_code}}"/>
+                </div>
+                <div class="col-md-9">
+                    <label for="contact number" class="form-label">Contact Number</label>
+                    <input type="number" class="form-control" id="contactnumber" name="contact_number" value="{{registeration.contact_number}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="role" class="form-label">Role</label>
+                    <input type="text" class="form-control" id="role" name="role" value="{{registeration.role}}" readonly/>
+                </div>
+                <div class="col-md-6">
+                    <label for="work mode preference" class="form-label">Work mode preference</label>
+                    <br>
+                    <select id="workmode" class="custom-select" name="work_mode_preference">
+                        <option selected >{{registeration.work_mode_preference}}</option>
+                        <option>work from home</option>
+                        <option>remote</option>
+                        <option>hybrid</option>
+                        <option>work from office</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="notice period" class="form-label">Notice Period</label>
+                    <input type="number" class="form-control" id="noticeperiod" name="notice_period" value="{{registeration.notice_period}}"/>
+                </div>
+                <div class="col-md-6">
+                    <label for="current ctc" class="form-label">Current CTC</label>
+                    <input name="current_ctc" type="number" class="form-control" id="currentctc" placeholder="in $ per annum" value="{{registeration.current_ctc}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="resume" class="form-label">Resume</label>
+                    <input class="form-control" type="file" id="resume" name="resume">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="profile picture" class="form-label">Profile Picture</label>
+                    <input class="form-control" type="file" id="profile" name="profile_picture">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="expectedctc" class="form-label">Expected CTC</label>
+                    <input name="expected_ctc" class="form-control" type="number" id="profile" placeholder="in $ per annum" value="{{registeration.expected_ctc}}">
+                </div>
+                <div class="col-md-6" style="padding-top: 1rem">
+                    <label class="form-label">Are you open to relocate ?</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="open_to_relocate" class="custom-control-input" value="Yes">
+                        <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="open_to_relocate" class="custom-control-input" value="No">
+                        <label class="custom-control-label" for="customRadioInline2">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display:flex; gap: 1.5rem;">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary" name="button" value="submit">Submit</button>
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary" name="button" value="reset">Reset</button>
+            </div>
+        </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <footer id="footer" style="padding: 7rem 0;">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="footer-info">
+                        <div class="section-title">
+                            <h2>Headquarter</h2>
+                        </div>
+                        <address>
+                            <p>212 Barrington Court <br>New York, Manhattan 10001</p>
+                        </address>
+
+                        <ul class="social-icon">
+                            <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                            <li><a href="#" class="fa fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-instagram"></a></li>
+                        </ul>
+
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2022 Jobital</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="footer-info">
+                        <div class="section-title">
+                            <h2>Contact Info</h2>
+                        </div>
+                        <address>
+                            <p>+918290496873</p>
+                            <p><a href="mailto:Jobital.edu@gmail.com">Jobital.edu@gmail.com</a></p>
+                        </address>
+
+                        <div class="footer_menu">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                                <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
+                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                <li><a href="{% url 'careers' %}">Careers</a></li>
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'signout' %}">Logout</a></li>
+                                {% else %}
+                                <li>
+                                <a href="{% url 'signin' %}?next={{request.path}}">Login</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="footer-info newsletter-form">
+                        <div class="section-title">
+                            <h2>Newsletter Signup</h2>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <form action="#" method="get">
+                                    <input type="email" class="form-control" placeholder="Enter your email" name="email"
+                                        id="email" required>
+                                    <input type="submit" class="form-control" name="submit" id="form-submit"
+                                        value="Send me">
+                                </form>
+                                <span><sup>*</sup> Please note - we do not spam your email.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'js2/jquery.js' %}"></script>
+    <script src="{% static 'js2/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js2/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js2/smoothscroll.js' %}"></script>
+    <script src="{% static 'js2/custom.js' %}"></script>
+</body>
+
+</html>
